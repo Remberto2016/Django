@@ -1,0 +1,200 @@
+{% extends "base/base.html" %}
+{% load widget_tweaks %}
+{% block titulo %}
+Registrar Pedido
+{% endblock titulo %}
+
+{% block css %}
+
+<style>
+
+
+.modal-header, h4, .close {
+	background-color: #0f1126;
+	color:white !important;
+	text-align: center;
+	font-size: 20px;
+}
+.modal-footer {
+	background-color: #00bfa5;
+} 
+.app{
+  font-family:Cooper Black;
+}
+</style>
+{% endblock css %}
+
+{% block container %}
+
+<div class="row">
+	<div class="col-md-12 col-xs-12">
+		<div class="x_panel">
+			<div class="x_title">
+				<h2 class="app">Registrar Pedido</h2>
+				<ul class="nav navbar-right panel_toolbox">
+					<li><a class="collapse-link" href="{% url 'lista_pedido' %}"><i class="fa fa-chevron-up"></i></a>
+					</li>
+					<li><a class="close-link" href="{% url 'usuario:inicio' %}"><i class="fa fa-close"></i></a>
+					</li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+			<div class="x_content">
+				<br />
+				<form class="form-horizontal form-label-left input_mask" method="POST">{% csrf_token %}
+
+					<div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="pais">Cliente:</label>
+						<div class="col-sm-8">
+							{{ form.cod_cliente}} <span class="fa fa-tel form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm- col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="id_articulo">Articulo:</label>
+						<div class="col-sm-8">
+							{{ form.id_articulo}} <span class="fa fa-user form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="ci">Fecha Pedido:</label>
+						<div class="col-sm-8">
+							{{ form.fechapedido}} <span class="fa fa-user form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<br>
+					<div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="nombres">Fecha Entrega:</label>
+						<div class="col-sm-8">
+							{{ form.fechaentrega}} <span class="fa fa-user form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="fechaenvio">Fecha Envio:</label>
+						<div class="col-sm-8">
+							{{ form.fechaenvio}} <span class="fa fa-user form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+
+					<div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="descripcion">Descripción:</label>
+						<div class="col-sm-8">
+							{{ form.descripcion}} <span class="fa fa-tel form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="x_title">
+						<h2>Destinatario</h2>
+						<ul class="nav navbar-right panel_toolbox">
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<br>
+
+
+					<div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="destinatario">Destinatario:</label>
+						<div class="col-sm-8">
+							{{ form.destinatario}} <span class="fa fa-tel form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="dirdestinatario">Direccion:</label>
+						<div class="col-sm-8">
+							{{ form.dirdestinatario}} <span class="fa fa-user form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+
+					<div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="ciudaddestainatario">Ciudad:</label>
+						<div class="col-sm-8">
+							{{ form.ciudaddestainatario}} <span class="fa fa-user form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<br>
+					<div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="regiondestinatario">Estado o Municipio:</label>
+						<div class="col-sm-8">
+							{{ form.regiondestinatario}} <span class="fa fa-user form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="paisdestainatario">Pais:</label>
+						<div class="col-sm-8">
+							{{ form.paisdestainatario}} <span class="fa fa-tel form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="x_title">
+						<h2>Total a Pagar</h2>
+						<ul class="nav navbar-right panel_toolbox">
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<br>
+
+					<div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="telefono">Precio Unidad:</label>
+						<div class="col-sm-8">
+						<input type="number" name="precio_unidad" id="precio_unidad" class="form-control" value="" min="{5"} max="" step="" required="required" title="" onkeyup="calcular()">
+							<span class="fa fa-tel form-control-feedback right help-block">{{ form.ci.errors }}</span> 
+						</div>
+					</div>
+
+
+					<div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="direccion">Cantidad:</label>
+						<div class="col-sm-8">
+							<input type="number" name="cantidad" id="cantidad" class="form-control" value="" min="{5"} max="" step="" required="required" title="" onkeyup="calcular()"><span class="fa fa-tel form-control-feedback right help-block">{{ form.ci.errors }}</span> 
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="ciudad">Descuento:</label>
+						<div class="col-sm-8">
+							<input type="number" name="descuento" id="descuento" class="form-control" value="" min="{5"} max="" step="" required="required" title="" disabled><span class="fa fa-tel form-control-feedback right help-block">{{ form.ci.errors }}</span> 
+							
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="provincia">Total:</label>
+						<div class="col-sm-8">
+							<input type="number" name="Sub_total" id="Sub_total" class="form-control" value="" min="{5"} max="" step="" required="required" title="" disabled><span class="fa fa-tel form-control-feedback right help-block">{{ form.ci.errors }}</span> 
+						</div>
+					</div>
+					<div class="col-md-12 col-sm-12 col-xs-12 ">
+						<div class="ln_solid"></div>
+						<a type="button" href="{% url 'lista_pedido' %}" class="btn btn-primary">Cancel</a>
+						<button type="submit" class="btn btn-success" value="save">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+
+
+
+	</div>
+</div>
+
+{% endblock container %}
+
+{% block js %}
+<script>
+function calcular(){
+	precio_unidad =$("#precio_unidad").val();
+	if(precio_unidad=='') precio_unidad=0;
+
+	cantidad =$("#cantidad").val();
+	if(cantidad=='') cantidad=0;
+
+	descuento= (precio_unidad*cantidad)*0.010;
+	$("#descuento").val(descuento);
+
+	Sub_total= (precio_unidad*cantidad)-descuento;
+	$("#Sub_total"). val(Sub_total);
+}
+
+</script>
+{% endblock js %}
+

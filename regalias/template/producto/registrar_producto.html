@@ -1,0 +1,118 @@
+{% extends "base/base.html" %}
+{% load widget_tweaks %}
+{% block titulo %}
+Registrar Producto
+{% endblock titulo %}
+
+{% block css %}
+<style>
+.modal-header, h4, .close {
+	background-color: #0f1126;
+	color:white !important;
+	text-align: center;
+	font-size: 20px;
+	border-radius: 3px;
+}
+
+</style>
+
+{% endblock css %}
+{% block contenido%}
+<div class="row">
+	<div class="col-md-12 col-xs-12">
+		<div class="x_panel">
+			<div class="x_title">
+				<h2 class="app">Registrar Producto</h2>
+				<ul class="nav navbar-right panel_toolbox">
+					<li><a class="collapse-link" href="{% url 'lista_producto' %}"><i class="fa fa-chevron-up"></i></a>
+					</li>
+					<li><a class="close-link" href="{% url 'usuario:inicio' %}"><i class="fa fa-close"></i></a>
+					</li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+			<div class="x_content">
+				<br />
+				<form role="form" action="" class="form-horizontal" method="POST" id="formulario">{% csrf_token %}
+					<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<label class="control-label col-sm-4" for="telefono">Proveedor:</label>
+						<div class="col-sm-6"> 
+							{% render_field form.proveedor %}
+						</div>
+						<div class="col-sm-2"> 
+							<a type="button" class="btn btn-info" href="{% url 'registrar_proveedor' %}"><span class="glyphicon glyphicon-plus"></span></a>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<br>
+
+					<div class="form-group col-md-6 col-sm-6 col-xs-12" >
+						<label class="control-label col-sm-4" for="cod_cliente">Nombre:</label>
+						<div class="col-sm-8">
+							{% render_field form.nombre%}
+						</div>
+					</div>
+
+					<div class="form-group col-md-6 col-sm-6 col-xs-12">
+						<label class="control-label col-sm-4" for="ci">Categoria:</label>
+						<div class="col-sm-8">
+							{% render_field form.cod_categoria %}
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<br>
+
+					<div class="form-group col-md-6 col-sm-6 col-xs-12">
+						<label class="control-label col-sm-4" for="nombres">Descripcion:</label>
+						<div class="col-sm-8">
+							{% render_field form.descripcion %}
+						</div>
+					</div>
+
+
+					<div class="form-group col-md-6 col-sm-6 col-xs-12">
+						<label class="control-label col-sm-4" for="apellidos">Costo Unitario:</label>
+						<div class="col-sm-8">
+							{% render_field form.costo_unitario %}
+						</div>
+					</div>
+
+					<div class="clearfix"></div>
+					<br>
+					<div class="form-group col-md-4 col-sm-6 col-xs-12">
+						<label class="control-label col-sm-4" for="razon_social">Costo Venta:</label>
+						<div class="col-sm-8">
+							{% render_field form.costo_venta %}
+						</div>
+					</div>
+
+					<div class="form-group col-md-4 col-sm-6 col-xs-12">
+						<label class="control-label col-sm-4" for="direccion">Stock Actual:</label>
+						<div class="col-sm-8">
+							{% render_field form.stock_actual %}
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<br>
+					<div class="col-md-6 col-md-offset-3">
+						<button type="submit" class="btn btn-primary" value="Save" onclick="ok()">Guardar</button>
+						<a href="{% url 'lista_producto' %}" class="btn btn-success" role="button">Retroceder</a>
+						<a href="{% url 'usuario:inicio' %}" class="btn btn-danger" role="button">Cancelar</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock contenido%}
+
+{% block js %}
+<script>
+function ok(){
+	alertify.success("Sea guardado correctamente"); 
+	return false;
+}
+
+</script>
+{% endblock js %}

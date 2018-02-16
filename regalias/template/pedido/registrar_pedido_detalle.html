@@ -1,0 +1,103 @@
+{% extends "base/base.html" %}
+{% load widget_tweaks %}
+{% block titulo %}
+    Registrar Pedido
+{% endblock titulo %}
+
+{% block css %}
+    <style>
+  .modal-header, h4, .close {
+      background-color: #0f1126;
+      color:white !important;
+      text-align: center;
+      font-size: 20px;
+  }
+  .modal-footer {
+      background-color: #00bfa5;
+  }
+  </style>
+{% endblock css %}
+
+{% block container %}	
+
+<br>
+<br>
+<div class="modal-header" style="padding:20px 50px;">
+	<a type="button" class="close" href="{% url 'lista_pedido' %}">&times;</a>
+	<h4><span class="glyphicon glyphicon-lock"></span> Registrar pedido detalle</h4>
+</div>
+<div class="col-sm-6 col-sm-offset-3 " >
+
+	<div class="modal-body" style="border: 2px  outset;">
+
+		<form role="form" action="" class="form-horizontal" method="POST" id="formulario">{% csrf_token %}
+
+			<div class="form-group">
+				<label class="control-label col-sm-4" for="id_pedido">Destinatario:</label>
+				<div class="col-sm-8">
+					{% render_field form.id_pedido %}
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-4" for="id_articulo">Articulo:</label>
+				<div class="col-sm-8">
+					{% render_field form.id_articulo %}
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-4" for="precio_unidad" name="precio_unidad">Precio unidad:</label>
+				<div class="col-sm-8">
+					{% render_field form.precio_unidad id="precio_unidad" %}
+					<!--<input type="number" name="precio_unidad" id="precio_unidad" class="form-control" required="required" onkeyup="calcular()">-->
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-4" for="cantidad">Cantidad:</label>
+				<div class="col-sm-8">
+					{% render_field form.cantidad id="cantidad" %}
+					<!--<input type="number" name="cantidad" id="cantidad" class="form-control"  required="required" pattern="" title="" onkeyup="calcular()">-->
+					
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-4" for="descuento">Total:</label>
+				<div class="col-sm-8">
+					{% render_field form.descuento id="descuento" %}
+					<!--<input type="number" name="descuento" id="descuento" class="form-control" required="required" pattern="" title="" disabled="true">-->
+					
+				</div>
+			</div>			    
+
+			<button type="submit" class="btn btn-success" value="Save"><span class="glyphicon glyphicon-check"></span> Guardar</button>
+			<a href="{% url 'lista_pedido' %}" class="btn btn-danger" role="button">Cancelar</a>
+
+		</form>
+	</div>
+
+</div>
+
+
+
+
+{% endblock container %}
+
+{% block js %}
+
+<script>
+function calcular(){
+	precio_unidad =$("#precio_unidad").val();
+	if(precio_unidad=='') precio_unidad=0;
+
+	cantidad =$("#cantidad").val();
+	if(cantidad=='') cantidad=0;
+
+	descuento= precio_unidad*cantidad;
+	$("#descuento").val(descuento);
+}
+
+</script>
+{% endblock js %}

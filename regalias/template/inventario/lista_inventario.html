@@ -1,0 +1,80 @@
+{% extends "base/base.html" %}
+{% block titulo %}
+Lista Inventario
+{% endblock titulo %}
+
+{% block css %}
+<style type="text/css" media="screen">
+.cursor:hover{
+	cursor: pointer; 
+}
+.tr:hover{
+	color: black;
+	background-color: #C2BFBF;
+}
+.app{
+	font-family:Cooper Black;
+}
+</style>
+{% endblock css %}
+
+{% block container %}
+<div class="col-md-12 col-sm-12 col-xs-12">
+	<div class="x_panel">
+		<div class="x_title">
+			<h2 class="app">Lista de Inventario</h2>
+			<ul class="nav navbar-right panel_toolbox">
+				<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+				</li>
+
+				<li><a class="close-link" href="{% url 'usuario:inicio' %}"><i class="fa fa-close"></i></a>
+				</li>
+			</ul>
+			<div class="clearfix"></div>
+		</div>
+		<div class="x_content">
+			<p class="text-muted font-13 m-b-30">
+				Este es una tabla donde contiene los datos de los Productos en inventario.
+			</p>
+			<table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+				<thead style="">
+					<tr>
+						<th>Id</th>
+						<th>Nombre</th>
+						<th>Categoria</th>
+						<th>Descripcion</th>
+						<th>Costo Unitario</th>
+						<th>Costo Venta</th>
+						<th>Stock</th>
+						<th>Proveedor</th>
+
+
+					</tr>
+				</thead>
+				<tbody>
+					{% if articulos %}
+					{% for articulo in articulos %}
+					<tr class="tr">
+						<td class="cursor">{{ articulo.id}}</td>
+						<td class="cursor">{{ articulo.nombre}}</td>
+						<td class="cursor">{{ articulo.cod_categoria }}</td>
+						<td class="cursor">{{ articulo.descripcion }}</td>
+						<td class="cursor">{{ articulo.costo_unitario }}</td>
+						<td class="cursor">{{ articulo.costo_venta }}</td>
+						<td class="cursor">{{ articulo.stock_actual}}</td>
+						<td class="cursor">{{ articulo.proveedor}}</td>
+
+
+					</tr>
+					{% endfor %}
+					{% else%}
+					<h1>No registros </h1>
+					{% endif %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+
+{% endblock container %}

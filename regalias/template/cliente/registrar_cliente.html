@@ -1,0 +1,183 @@
+
+{% extends "base/base.html" %}
+{% load widget_tweaks %}
+{% block titulo %}
+registrar cliente
+{% endblock titulo %}
+
+{% block css %}
+<style>
+.modal-header, h4, .close {
+	background-color: #0f1126;
+	color:white !important;
+	text-align: center;
+	font-size: 20px;
+	border-radius: 3px;
+}
+.modal-footer {
+	background-color: #00bfa5;
+}
+.app{
+	font-family:Cooper Black;
+
+}
+</style>
+
+{% endblock css %}
+
+{% block container %}
+<div class="row">
+	<div class="col-md-12 col-xs-12">
+		<div class="x_panel">
+			<div class="x_title">
+				<h2 class="app">Registrar Cliente</h2>
+				<ul class="nav navbar-right panel_toolbox">
+					<li><a class="collapse-link" href="{% url 'lista_cliente' %}"><i class="fa fa-chevron-up"></i></a>
+					</li>
+					<li><a class="close-link" href="{% url 'usuario:inicio' %}"><i class="fa fa-close"></i></a>
+					</li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+			<div class="x_content">
+				<br />
+				<form class="form-horizontal form-label-left input_mask" method="POST">{% csrf_token %}
+
+					<div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="pais">Pais:</label>
+						<div class="col-sm-8">
+							{{ form.pais}} <span class="fa fa-tel form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm- col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="cod_cliente">Codigo:</label>
+						<div class="col-sm-8">
+							{{ form.cod_cliente}} <span class="fa fa-user form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="ci">C. I. :</label>
+						<div class="col-sm-8">
+							{{ form.ci}} <span class="fa fa-user form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<br>
+					<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="nombres">Nombres:</label>
+						<div class="col-sm-8">
+							{{ form.nombres}} <span class="fa fa-user form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+					<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="apellidos">Apellidos:</label>
+						<div class="col-sm-8">
+							{{ form.apellidos}} <span class="fa fa-user form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<br>
+					<div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="fecha">Fecha de Nacimiento:</label>
+						<div class="col-sm-8">
+							{{ form.fecha}} <span class="fa fa-tel form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="nacionalidad">Nacionalidad:</label>
+						<div class="col-sm-8">
+							{{ form.nacionalidad}} <span class="fa fa-tel form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="razon_social">Razon Social:</label>
+						<div class="col-sm-8">
+							{{ form.razon_social}} <span class="fa fa-user form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<br>
+					<div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="razon_social">Genero:</label>
+						<div class="col-sm-8">
+							{{ form.sexo}} <span class="fa fa-user form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="x_title">
+						<h2>Contacto</h2>
+						<ul class="nav navbar-right panel_toolbox">
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<br>
+					<div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="correo">Email:</label>
+						<div class="col-sm-8">
+							{{ form.correo}} <span class="fa fa-user form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="telefono_fijo">Telf. Fijo:</label>
+						<div class="col-sm-8">
+							{{ form.telefono_fijo}} <span class="fa fa-tel form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="telefono">Celular:</label>
+						<div class="col-sm-8">
+							{{ form.telefono}} <span class="fa fa-tel form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+					<div class="x_title">
+						<h2>Direccion</h2>
+						<ul class="nav navbar-right panel_toolbox">
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<br>
+					<div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="direccion">Direccion:</label>
+						<div class="col-sm-8">
+							{{ form.direccion}} <span class="fa fa-tel form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="ciudad">Ciudad:</label>
+						<div class="col-sm-8">
+							{{ form.ciudad}} <span class="fa fa-tel form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+						<label class="control-label col-sm-4" for="provincia">Estado o Provincia:</label>
+						<div class="col-sm-8">
+							{{ form.provincia}} <span class="fa fa-tel form-control-feedback right help-block">{{ form.ci.errors }}</span>
+						</div>
+					</div>
+					<div class="col-md-12 col-sm-12 col-xs-12 ">
+						<div class="ln_solid"></div>
+						<button type="submit" class="btn btn-primary">Cancelar</button>
+						<button type="submit" class="btn btn-success" value="save" onclick="ok()">Guardar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+
+
+
+	</div>
+</div>
+
+{% endblock container %}
+
+
+
+{% block js %}
+<script>
+function ok(){
+	alertify.success("Sea guardado correctamente"); 
+	return false;
+}
+</script>
+{% endblock js %}

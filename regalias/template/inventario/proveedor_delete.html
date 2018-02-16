@@ -1,0 +1,54 @@
+
+{% extends "base/base.html" %}
+{% load widget_tweaks %}
+{% block titulo %}
+    Eliminar Proveedor
+{% endblock titulo %}
+
+{% block css %}
+    <style>
+  .modal-header, h4, .close {
+      background-color: #0f1126;
+      color:white !important;
+      text-align: center;
+      font-size: 20px;
+  }
+  .modal-footer {
+      background-color: #00bfa5;
+  }
+  </style>
+{% endblock css %}
+{% block container %}
+
+<div class="col-sm-4 col-sm-offset-3 col-md-6 col-md-offset-2" style="background-color:lightcyan;">	
+	<div class="modal-header">
+		<a type="button" class="close" href="{% url 'lista_proveedor' %}">&times;</a>
+		<h4><span class="glyphicon glyphicon-lock"></span> Eliminar Proveedor</h4>
+	</div>
+	<div class="modal-body" >
+
+		<form role="form" action="" class="form-horizontal" method="POST" id="formulario">{% csrf_token %}
+			<h5>¿Desea eliminar el registro de:
+				
+			</h5> <h3>{{proveedor.nombres}}</h3>
+
+
+			<button type="submit" class="btn btn-danger" value="Save">Si, eliminar</button>
+			<a href="{% url 'lista_proveedor' %}" class="btn btn-success" role="button">Cancelar</a>
+
+		</form>
+	</div>
+</div>
+
+
+{% endblock container %}
+{% block js %}
+    
+    <script>
+$(document).ready(function(){
+
+        $("#myModal").modal("show");
+});
+
+</script>
+{% endblock js %}

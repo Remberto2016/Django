@@ -1,0 +1,318 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>
+    {% block titulo %}
+    {% endblock titulo %} 
+  </title>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{% static "css/green.css" %}">
+  <!-- Datatables -->
+  <link rel="stylesheet" href="{% static "css/dataTables.bootstrap.min.css" %}">
+  <link rel="stylesheet" href="{% static "css/responsive.bootstrap.min.css" %}">
+  <!-- Other -->
+
+  <link rel="stylesheet" href="{% static "css/component.css" %}">
+  
+  <link rel="stylesheet" href="{% static "css/alertify.core.css" %}">
+  <link rel="stylesheet" href="{% static "css/alertify.default.css" %}">
+  
+  
+  
+  <link rel="stylesheet" href="{% static "css/custom.min.css" %}"> 
+
+  {% block css %}
+
+  {% endblock css %}
+
+</head>
+<body class="nav-md" >
+  <div class="container body" >
+    <div class="main_container" style="background-color:#0f1126;">
+      <div class="col-md-3 left_col">
+        <div class="left_col scroll-view" style="background-color:#0f1126;">
+          <div class="navbar nav_title" style="background-color:#0f1126;">
+            <a href="#" class="site_title"><i class="fa fa-paw"></i> <span>ISVENT !</span></a>
+          </div>
+
+          <div class="clearfix"></div>
+
+          <!-- menu profile quick info -->
+          <div class="profile" style="background-color:#0f1126;">
+            <div class="profile_pic" style="background-color:#0f1126;">
+              <img src="" alt="..." class="img-circle profile_img">
+            </div>
+            <div class="profile_info" style="background-color:#0f1126;">
+              <span>Bienvenidos,</span>
+              {% if user.is_authenticated%}
+              <h2>{{user.username}}</h2>
+              {% endif %}
+              
+            </div>
+          </div>
+          <!-- /menu profile quick info -->
+
+          <br />
+
+          <!-- sidebar menu -->
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu" style="background-color:#0f1126;">
+            <div class="menu_section">
+              <h3>General</h3>
+              <ul class="nav side-menu">
+                <li><a><i class="fa fa-users"></i> Clientes<span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="{% url 'registrar_cliente' %}">Registrar Cliente</a></li>
+                    <li><a href="index2.html">Dashboard2</a></li>
+                    <li><a href="{% url 'lista_cliente' %}">Lista Clientes</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-sitemap"></i> Proveedor <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="{% url 'registrar_proveedor' %}">Registrar Proveedor</a></li>
+                    <li><a href="{% url 'lista_proveedor' %}">Lista Proveedor</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-briefcase"></i> Productos <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="{% url 'registrar_producto' %}">Nuevo Producto</a></li>
+                    <li><a href="#">Entrada de Producto</a></li>
+                    <li><a href="{% url 'lista_producto' %}">Lista Productos</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-archive"></i> Pedidos <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="{% url 'registrar_pedido' %}">Registrar pedido</a></li>
+                    <li><a href="{% url 'lista_pedido' %}">Lista pedido</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-archive"></i> Inventario <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="#">linck 1</a></li>
+                    <li><a href="{% url 'lista_inventario' %}">Lista inventario</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-shopping-cart"></i> Ventas <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="chartjs.html">Chart JS</a></li>
+                    <li><a href="chartjs2.html">Chart JS2</a></li>
+                    <li><a href="other_charts.html">Other Charts</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-list"></i> Reportes <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="#">Clientes</a></li>
+                    <li><a href="#">Proveedor</a></li>
+                    <li><a href="#">Productos</a></li>
+                    <li><a href="#">Pedidos</a></li>
+                    <li><a href="#">Inventario</a></li>
+                    <li><a href="#">Ventas</a></li>
+                    <li><a href="#">Usuarios</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-bar-chart"></i> Estadisticas <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="chartjs.html">Chart JS</a></li>
+                    <li><a href="chartjs2.html">Chart JS2</a></li>
+                    <li><a href="other_charts.html">Other Charts</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-user"></i> Usuarios <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="chartjs.html">Chart JS</a></li>
+                    <li><a href="chartjs2.html">Chart JS2</a></li>
+                    <li><a href="other_charts.html">Other Charts</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+
+          </div>
+          <!-- /sidebar menu -->
+
+          <!-- /menu footer buttons -->
+          <div class="sidebar-footer hidden-small" style="background-color:#0f1126;">
+            <a data-toggle="tooltip" data-placement="top" title="Settings" style="background-color:#0f1126;">
+              <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="FullScreen" style="background-color:#0f1126;">
+              <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Lock" style="background-color:#0f1126;">
+              <span class="glyphicon glyphicon-eye-close" aria-hidden="true" ></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Logout" style="background-color:#0f1126;" href="{% url 'usuario:salir' %}">
+              <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+            </a>
+          </div>
+          <!-- /menu footer buttons -->
+        </div>
+      </div>
+
+      <!-- top navigation -->
+      <div class="top_nav">
+        <div class="nav_menu">
+          <nav>
+            <div class="nav toggle">
+              <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li class="">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <img src="" alt="">{{ request.user.username}}
+                  <span class=" fa fa-angle-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="javascript:;"> Profile</a></li>
+
+                  <li><a href="{% url 'usuario:salir' %}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                </ul>
+              </li>
+
+
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <!-- /top navigation -->
+
+      <!-- page content -->
+      <div class="right_col" role="main">
+        <div class="">
+          <div class="clearfix"></div>
+
+          <div class="row">
+            {% block container %}
+
+            {% endblock container %}
+
+            {% block contenido %}
+
+            {% endblock contenido %}
+
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+      <!-- /page content -->
+
+      <!-- footer content -->
+      <footer>
+        <div class="pull-right">
+          Remberto Lopez Romano
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      <!-- /footer content -->
+    </div>
+  </div>
+
+  <!-- jQuery -->
+  <script src="{% static "js/jquery.min.js" %}" ></script>
+  <!-- Bootstrap -->
+  <script src="{% static "js/bootstrap.min.js" %}" ></script>
+
+  <!-- Datatables -->
+  <script src="{% static "js/jquery.dataTables.min.js" %}" ></script>
+  <script src="{% static "js/dataTables.bootstrap.min.js" %}" ></script>
+
+  <script src="{% static "js/dataTables.responsive.min.js" %}" ></script>
+  <script src="{% static "js/responsive.bootstrap.js" %}" ></script>
+
+
+  <script src="{% static "js/jquery.validate.js" %}" ></script>
+
+  <script src="{% static "js/alertify.js" %}" ></script>
+  <script src="{% static "js/angular.min.js" %}" ></script>
+  {% block js %}
+      
+  {% endblock js %}
+
+
+
+
+
+  <!-- Custom Theme Scripts -->
+  <script src="{% static "js/custom.min.js" %}" ></script>
+
+  <!-- Datatables -->
+  <script>
+  $(document).ready(function() {
+    var handleDataTableButtons = function() {
+      if ($("#datatable-buttons").length) {
+        $("#datatable-buttons").DataTable({
+          dom: "Bfrtip",
+          buttons: [
+          {
+            extend: "copy",
+            className: "btn-sm"
+          },
+          {
+            extend: "csv",
+            className: "btn-sm"
+          },
+          {
+            extend: "excel",
+            className: "btn-sm"
+          },
+          {
+            extend: "pdfHtml5",
+            className: "btn-sm"
+          },
+          {
+            extend: "print",
+            className: "btn-sm"
+          },
+          ],
+          responsive: true
+        });
+      }
+    };
+
+    TableManageButtons = function() {
+      "use strict";
+      return {
+        init: function() {
+          handleDataTableButtons();
+        }
+      };
+    }();
+
+    $('#datatable').dataTable();
+    $('#datatable-keytable').DataTable({
+      keys: true
+    });
+
+    $('#datatable-responsive').DataTable();
+
+    $('#datatable-scroller').DataTable({
+      ajax: "js/datatables/json/scroller-demo.json",
+      deferRender: true,
+      scrollY: 380,
+      scrollCollapse: true,
+      scroller: true
+    });
+
+    var table = $('#datatable-fixed-header').DataTable({
+      fixedHeader: true
+    });
+
+    TableManageButtons.init();
+  });
+  </script>
+  <!-- /Datatables -->
+</body>

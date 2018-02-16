@@ -1,0 +1,85 @@
+{% extends 'base/base1.html' %}
+{% load widget_tweaks %}
+{% block titulo %}
+Registrar
+{% endblock titulo %}
+
+{% block css %}
+
+{% endblock css %}
+
+
+{% block container %}
+<div class="row">
+	<form class="col s4 offset-s4" method="POST" id="formulario" style="border:2px outset">{% csrf_token %}
+		<h4>Registro de Usuario</h4>
+		<div class="row" style="">
+			<div class="input-field ">
+				<i class="material-icons prefix">person </i>
+				<input id="icon_prefix" type="text" class="validate" name="first_name">
+				<label for="icon_prefix">Nombre</label>
+			</div>
+			<div class="input-field ">
+				<i class="material-icons prefix">account_box</i>
+				<input id="icon_prefix" type="text" class="validate" name="last_name">
+				<label for="icon_prefix">Apellidos</label>
+			</div>
+			<div class="input-field ">
+				<i class="material-icons prefix">account_circle</i>
+				<input id="icon_prefix" type="text" class="validate" name="username">
+				<label for="icon_prefix">Usuario</label>
+			</div>
+			<div class="input-field ">
+				<i class="material-icons prefix">email</i>
+				<input id="icon_prefix" type="email" class="validate" name="email">
+				<label for="icon_prefix">Email</label>
+			</div>
+
+
+			<div class="input-field ">
+				<i class="material-icons prefix">visibility_off</i>
+				<input id="icon_telephone" type="password" class="validate" name="password1">
+				<label for="icon_telephone">Password</label>
+			</div>
+
+			<div class="input-field ">
+				<i class="material-icons prefix">visibility_off</i>
+				<input id="icon_telephone" type="password" class="validate" name="password2">
+				<label for="icon_telephone">Password</label>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-3" for="sexo">Super Ususario:</label>
+				<div class="col-sm-9">
+					<select name="is_superuser" id="is_superuser" class="form-control" required="required">
+						<option value="true">True</option>
+						<option value="false">false</option>
+					</select>
+				</div>
+			</div>
+			<br>
+			<br>
+			<button class="btn waves-effect waves-light" type="submit" name="action" value="save">Guardar
+				<i class="material-icons right">send</i>
+			</button>
+			<a class="btn waves-effect waves-light" href="{% url 'usuario:login' %}">Cancelar<i class="material-icons right">cancel</i></a>
+				
+		</div>
+		
+
+	</form>
+</div>
+
+
+
+{% endblock container %}
+
+{% block js %}
+<script>
+
+
+</script>
+
+
+
+
+{% endblock js %}
